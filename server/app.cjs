@@ -6,10 +6,10 @@ const app = express()
 const path = require('node:path')
 app.disable('x-powered-by')
 app.use(express.static(path.join(__dirname, 'full-stack page')))
-app.get('*',(req,res)=>{
-    // eslint-disable-next-line no-undef
-    res.sendFile(path.join(__dirname,'index.html'))
-})
+// app.get('*',(req,res)=>{
+//     // eslint-disable-next-line no-undef
+    
+// })
 app.get('/',(req, res)=>{
     res.json({message : 'Hola mundo'})
 })
@@ -27,6 +27,7 @@ app.get('/items',(req , res)=>{
         res.json(filteredProduct)
     }
     res.json(products)
+    res.sendFile(path.join(__dirname,'index.html'))
 })
 app.get('/items/:id' , (req , res)=>{
     res.header('Access-Control-Allow-Origin','*')

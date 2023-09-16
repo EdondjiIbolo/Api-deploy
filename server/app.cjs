@@ -10,13 +10,13 @@ app.get('/',(req, res)=>{
 app.get('/items',(req , res)=>{
     res.header('Access-Control-Allow-Origin','*')
     res.header('Access-Control-Allow-methods', 'GET')
-    const {search} = req.query
+    const {q} = req.query
 
-    if(search){
+    if(q){
         const filteredProduct = products.filter(product=> 
-            product.brand.toLowerCase().includes(search.toLowerCase()) || 
-            product.title.toLowerCase().includes(search.toLowerCase()) ||
-            product.category.toLowerCase().includes(search.toLowerCase())
+            product.brand.toLowerCase().includes(q.toLowerCase()) || 
+            product.title.toLowerCase().includes(q.toLowerCase()) ||
+            product.category.toLowerCase().includes(q.toLowerCase())
             )
         res.json(filteredProduct)
     }
